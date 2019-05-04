@@ -34,7 +34,6 @@ RUN rm -rf \
     usr/lib/node_modules/npm/make.bat \
     usr/lib/node_modules/npm/appveyor.yml \
     usr/lib/node_modules/npm/configure \
-    usr/lib/node_modules/npm/package.json \
     usr/lib/node_modules/npm/bin/*.cmd \
     usr/lib/node_modules/npm/bin/node-gyp-bin/*.cmd \
     usr/lib/node_modules/npm/html \
