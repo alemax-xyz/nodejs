@@ -38,6 +38,7 @@ RUN rm -rf \
     usr/lib/node_modules/npm/bin/node-gyp-bin/*.cmd \
     usr/lib/node_modules/npm/html \
     usr/lib/node_modules/npm/man \
+    usr/lib/node_modules/npm/docs \
     usr/share
 
 WORKDIR /

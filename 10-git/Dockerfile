@@ -60,7 +60,15 @@ WORKDIR /rootfs
 
 RUN rm -rf \
     etc/bash_completion.d \
-    usr/share
+    usr/share \
+    usr/lib/git-core/git \
+    usr/lib/git-core/git-add--interactive \
+    usr/lib/git-core/git-shell \
+    usr/lib/git-core/git-upload-pack \
+    usr/lib/git-core/mergetools \
+ && ln -s /usr/bin/git usr/lib/git-core/git \
+ && ln -s /usr/bin/git-upload-pack usr/lib/git-core/git-upload-pack \
+ && ln -s /usr/bin/git-shell usr/lib/git-core/git-shell
 
 WORKDIR /
 
