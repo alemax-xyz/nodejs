@@ -1,4 +1,4 @@
-FROM library/ubuntu:bionic AS build
+FROM library/ubuntu:focal AS build
 
 ENV LANG=C.UTF-8
 
@@ -15,9 +15,9 @@ RUN apt-get download \
     libcurl3-gnutls \
     libgnutls30 \
     libgmp10 \
-    libhogweed4 \
+    libhogweed5 \
     libp11-kit0 \
-    libffi6 \
+    libffi7 \
     libtasn1-6 \
     libunistring2 \
     libgssapi-krb5-2 \
@@ -40,7 +40,7 @@ RUN apt-get download \
     libsasl2-2 \
     libsasl2-modules-db \
     libldap-common \
-    libnettle6 \
+    libnettle7 \
     libnghttp2-14 \
     libpsl5 \
     librtmp1 \
@@ -66,7 +66,7 @@ RUN rm -rf \
 WORKDIR /
 
 
-FROM clover/nodejs:8
+FROM clover/nodejs:13
 
 ENV LANG=C.UTF-8
 
