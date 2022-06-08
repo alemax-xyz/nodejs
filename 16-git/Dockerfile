@@ -46,6 +46,8 @@ RUN apt-get download \
     librtmp1 \
     libexpat1 \
     libkeyutils1 \
+    libssh-4 \
+    libbrotli1 \
     git
 RUN find *.deb | xargs -I % dpkg-deb -x % /rootfs
 
