@@ -1,4 +1,4 @@
-FROM library/ubuntu:focal AS build
+FROM library/debian:stable-slim AS build
 
 ENV LANG=C.UTF-8
 
@@ -15,9 +15,9 @@ RUN apt-get download \
     libcurl3-gnutls \
     libgnutls30 \
     libgmp10 \
-    libhogweed5 \
+    libhogweed6 \
     libp11-kit0 \
-    libffi7 \
+    libffi8 \
     libtasn1-6 \
     libunistring2 \
     libgssapi-krb5-2 \
@@ -26,28 +26,30 @@ RUN apt-get download \
     libkrb5-3 \
     libkrb5support0 \
     libidn2-0 \
-    libldap-2.4-2 \
+    libldap-2.5-0 \
     libgssapi3-heimdal \
     libasn1-8-heimdal \
-    libhcrypto4-heimdal \
+    libhcrypto5-heimdal \
     libheimbase1-heimdal \
     libheimntlm0-heimdal \
     libwind0-heimdal \
     libkrb5-26-heimdal \
     libhx509-5-heimdal \
     libsqlite3-0 \
-    libroken18-heimdal \
+    libroken19-heimdal \
     libsasl2-2 \
     libsasl2-modules-db \
     libldap-common \
-    libnettle7 \
+    libnettle8 \
     libnghttp2-14 \
     libpsl5 \
     librtmp1 \
     libexpat1 \
     libkeyutils1 \
-    libssh-4 \
+    libssh2-1 \
     libbrotli1 \
+    libzstd1 \
+    openssh-client \
     git
 RUN find *.deb | xargs -I % dpkg-deb -x % /rootfs
 
@@ -68,7 +70,7 @@ RUN rm -rf \
 WORKDIR /
 
 
-FROM clover/nodejs:11
+FROM clover/nodejs:18
 
 ENV LANG=C.UTF-8
 
