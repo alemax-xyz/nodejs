@@ -12,7 +12,10 @@ The image is based on [NodeSource](https://nodesource.com/) builds and it is bui
 |  18 |    `18.19.0` |    `10.2.3` |
 |  20 |    `20.10.0` |    `10.2.3` |
 |  21 |     `21.4.0` |    `10.2.4` |
+|  22 |     `21.4.0` |    `10.2.4` |
+|  23 |     `21.4.0` |    `10.2.4` |
+|  24 |     `21.4.0` |    `10.2.4` |
 
 ## Additional version tags
 
- * `{8..19}-git` are based on `{8..19}` with additional `openssh-client` and `git` binaries;
+ * `{16..24}-git` are based on `{16..24}` with additional `openssh-client` and `git` binaries;

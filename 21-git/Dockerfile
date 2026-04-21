@@ -6,47 +6,46 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get install -y \
         --no-install-recommends \
-        software-properties-common \
         apt-utils
 
 RUN mkdir -p /build /rootfs
 WORKDIR /build
 RUN apt-get download \
-    libcurl3-gnutls \
-    libgnutls30 \
+    libcurl3t64-gnutls \
+    libgnutls30t64 \
     libgmp10 \
-    libhogweed6 \
+    libhogweed6t64 \
     libp11-kit0 \
     libffi8 \
     libtasn1-6 \
-    libunistring2 \
+    libunistring5 \
     libgssapi-krb5-2 \
     libcom-err2 \
     libk5crypto3 \
     libkrb5-3 \
     libkrb5support0 \
     libidn2-0 \
-    libldap-2.5-0 \
-    libgssapi3-heimdal \
-    libasn1-8-heimdal \
-    libhcrypto5-heimdal \
-    libheimbase1-heimdal \
-    libheimntlm0-heimdal \
-    libwind0-heimdal \
-    libkrb5-26-heimdal \
-    libhx509-5-heimdal \
+    libldap2 \
+    libgssapi3t64-heimdal \
+    libasn1-8t64-heimdal \
+    libhcrypto5t64-heimdal \
+    libheimbase1t64-heimdal \
+    libheimntlm0t64-heimdal \
+    libwind0t64-heimdal \
+    libkrb5-26t64-heimdal \
+    libhx509-5t64-heimdal \
     libsqlite3-0 \
-    libroken19-heimdal \
+    libroken19t64-heimdal \
     libsasl2-2 \
     libsasl2-modules-db \
     libldap-common \
-    libnettle8 \
+    libnettle8t64 \
     libnghttp2-14 \
-    libpsl5 \
+    libpsl5t64 \
     librtmp1 \
     libexpat1 \
     libkeyutils1 \
-    libssh2-1 \
+    libssh2-1t64 \
     libbrotli1 \
     libzstd1 \
     openssh-client \

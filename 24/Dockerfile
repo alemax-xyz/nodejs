@@ -28,13 +28,13 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         gnupg
 
 RUN export DEBIAN_FRONTEND=noninteractive \
- && echo "deb [trusted=yes] https://deb.nodesource.com/node_20.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
+ && echo "deb [trusted=yes] https://deb.nodesource.com/node_24.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
  && apt-get update
 
 RUN mkdir -p /build /rootfs
 WORKDIR /build
 RUN apt-get download \
-    'nodejs=20*'
+    'nodejs=24*'
 
 RUN find *.deb | xargs -I % dpkg-deb -x % /rootfs
 
@@ -76,5 +76,3 @@ FROM clover/common
 ENV LANG=C.UTF-8
 
 COPY --from=build /rootfs /
-
-CMD ["sh"]

@@ -69,10 +69,8 @@ RUN rm -rf \
 WORKDIR /
 
 
-FROM clover/nodejs:18
+FROM clover/nodejs:24
 
 ENV LANG=C.UTF-8
 
 COPY --from=build /rootfs /
-
-CMD ["sh"]

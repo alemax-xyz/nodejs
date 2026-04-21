@@ -1,3 +1,18 @@
+FROM clover/base AS base
+
+RUN groupadd \
+        --gid 50 \
+        --system \
+        www \
+ && useradd \
+        --home-dir /var/www \
+        --no-create-home \
+        --system \
+        --shell /bin/false \
+        --uid 50 \
+        --gid 50 \
+        www
+
 FROM library/debian:stable-slim AS build
 
 ENV LANG=C.UTF-8
@@ -5,7 +20,6 @@ ENV LANG=C.UTF-8
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get install -y \
-        software-properties-common \
         apt-utils
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -52,6 +66,8 @@ RUN rm -rf \
     usr/lib/node_modules/npm/scripts/release.sh \
     usr/lib/node_modules/npm/scripts/relocate.sh \
     usr/share
+
+COPY --from=base /etc/group /etc/gshadow /etc/passwd /etc/shadow etc/
 
 WORKDIR /
 

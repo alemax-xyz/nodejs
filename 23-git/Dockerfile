@@ -69,7 +69,7 @@ RUN rm -rf \
 WORKDIR /
 
 
-FROM clover/nodejs:18
+FROM clover/nodejs:23
 
 ENV LANG=C.UTF-8
 
