@@ -4,6 +4,15 @@ Node.js® is an open-source, cross-platform JavaScript runtime environment.
 
 The image is based on [NodeSource](https://nodesource.com/) builds and it is built on top of the [clover/common](https://hub.docker.com/r/clover/common/).
 
+### Enviroment variables
+
+| Name | Default value | Description
+| ---- | ------------- | -----------
+| `PUID` | `50` | Desired _UID_ of the process owner _*_
+| `PGID` | primary group id of the _UID_ user (`50`) | Desired _GID_ of the process owner _*_
+| `CRON` | _not set_ | Will start _cron_ inside the container if set to `1`
+| `TIMEZONE` | `UTC` | Desired container timezone
+
 ## Available versions
 
 | tag | node version | npm version |
@@ -19,3 +28,8 @@ The image is based on [NodeSource](https://nodesource.com/) builds and it is bui
 ## Additional version tags
 
  * `{16..24}-git` are based on `{16..24}` with additional `openssh-client` and `git` binaries;
+
+### Supported platforms
+
+ * `linux/amd64`;
+ * `linux/arm64/v8`;
