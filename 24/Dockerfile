@@ -18,17 +18,10 @@ FROM library/debian:stable-slim AS build
 ENV LANG=C.UTF-8
 
 RUN export DEBIAN_FRONTEND=noninteractive \
- && apt-get update \
- && apt-get install -y \
-        apt-utils
+ && apt-get update
 
 RUN export DEBIAN_FRONTEND=noninteractive \
- && apt-get install -y \
-        wget \
-        gnupg
-
-RUN export DEBIAN_FRONTEND=noninteractive \
- && echo "deb [trusted=yes] https://deb.nodesource.com/node_24.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
+ && echo "deb [trusted=yes] http://deb.nodesource.com/node_24.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
  && apt-get update
 
 RUN mkdir -p /build /rootfs
