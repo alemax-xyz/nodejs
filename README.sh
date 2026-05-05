@@ -32,10 +32,12 @@ cat <<EOF
 
 ## Additional version tags
 
- * \`{16..24}-git\` are based on \`{16..24}\` with additional \`openssh-client\` and \`git\` binaries;
+ * \`{VERSION}-git\` are based on \`{VERSION}\` with additional \`openssh-client\` and \`git\` binaries;
 
 ### Supported platforms
 
- * \`linux/amd64\`;
- * \`linux/arm64/v8\`;
 EOF
+for PLATFORM in $PLATFORMS; do cat <<EOF
+ * \`$PLATFORM\`;
+EOF
+done

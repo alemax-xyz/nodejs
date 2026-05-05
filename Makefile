@@ -10,6 +10,7 @@ all: ${TARGETS} latest latest-git README.md
 .PHONY: all ${TARGETS} latest latest-git
 
 README.md: README.sh
+	PLATFORMS="`docker buildx imagetools inspect clover/nodejs --raw | jq -r '.manifests[] | select(.platform.os!="unknown" and .platform.architecture!="unknown") | "\(.platform.os)/\(.platform.architecture)\(.platform.variant//"")"'`" \
 	sh $^ ${VERSIONS} > $@
 
 ${TARGETS}:
