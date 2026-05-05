@@ -8,22 +8,25 @@ The image is based on [NodeSource](https://nodesource.com/) builds and it is bui
 
 | Name | Default value | Description
 | ---- | ------------- | -----------
-| `PUID` | `50` | Desired _UID_ of the process owner _*_
-| `PGID` | primary group id of the _UID_ user (`50`) | Desired _GID_ of the process owner _*_
-| `CRON` | _not set_ | Will start _cron_ inside the container if set to `1`
-| `TIMEZONE` | `UTC` | Desired container timezone
+| `PUID` | _not set_ | desired user id of the process owner
+| `PGID` | _not set_ | desired group id of the process pwner (primary group of the `PUID` user)
+| `PUSER` | _not set_ | desired `PUID` user name
+| `PGROUP` | _not set_ | desired `PGID` group name
+| `CHOWN` | _not set_ | space-separated list of directories to change ownership to `PUID`/`PGID` during container startup
+| `CRON` | _not set_ (`0`) | will start _cron_ inside the container if set to `1`
+| `TZ` / `TIMEZONE` | _not set_ (`UTC`) | desired container timezone
 
 ## Available versions
 
 | tag | node version | npm version |
 |----:|-------------:|------------:|
 |  16 |    `16.20.2` |    `8.19.4` |
-|  18 |    `18.19.0` |    `10.2.3` |
-|  20 |    `20.10.0` |    `10.2.3` |
-|  21 |     `21.4.0` |    `10.2.4` |
-|  22 |     `21.4.0` |    `10.2.4` |
-|  23 |     `21.4.0` |    `10.2.4` |
-|  24 |     `21.4.0` |    `10.2.4` |
+|  18 |    `18.20.8` |    `10.8.2` |
+|  20 |    `20.20.2` |    `10.8.2` |
+|  21 |     `21.7.3` |    `10.5.0` |
+|  22 |    `22.22.2` |    `10.9.7` |
+|  23 |    `23.11.1` |    `10.9.2` |
+|  24 |    `24.15.0` |   `11.12.1` |
 
 ## Additional version tags
 
