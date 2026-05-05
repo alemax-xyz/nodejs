@@ -1,12 +1,16 @@
-override TARGETS = 16 16-git 18 18-git 20 20-git 21 21-git 22 22-git 23 23-git 24 24-git
+override VERSIONS = 16 18 20 21 22 23 24
+override TARGETS = $(strip $(foreach v,$(VERSIONS),$(v) $(v)-git))
 
 TAG ?= clover/nodejs
 PLATFORM ?= linux/amd64,linux/arm64/v8
 
 
-all: ${TARGETS} latest latest-git
+all: ${TARGETS} latest latest-git README.md
 
 .PHONY: all ${TARGETS} latest latest-git
+
+README.md: README.sh
+	sh $^ ${VERSIONS} > $@
 
 ${TARGETS}:
 	docker buildx build --platform ${PLATFORM} -t ${TAG}:$@ $@ --push
