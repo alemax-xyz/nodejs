@@ -1,3 +1,4 @@
+TAG="$1" shift
 cat <<EOF
 # NodeJS docker images
 
@@ -25,8 +26,8 @@ EOF
 for VERSION do printf \
 	'| %4s | %12s | %11s |\n' \
 	"\`$VERSION\`" \
-	"\`$(docker run --rm "clover/nodejs:$VERSION" node --version)\`" \
-	"\`$(docker run --rm clover/nodejs:$VERSION npm --version)\`"
+	"\`$(docker run --rm "$TAG:$VERSION" node --version)\`" \
+	"\`$(docker run --rm "$TAG:$VERSION" npm --version)\`"
 done
 cat <<EOF
 
@@ -37,7 +38,6 @@ cat <<EOF
 ### Supported platforms
 
 EOF
-for PLATFORM in $PLATFORMS; do cat <<EOF
- * \`$PLATFORM\`;
-EOF
-done
+docker buildx imagetools inspect ${TAG} --raw | \
+	jq -r '.manifests[] | select(.platform.os!="unknown" and .platform.architecture!="unknown") | "\(.platform.os)/\(.platform.architecture)\(.platform.variant//"")"' | \
+		while read PLATFORM; do printf ' * `%s`\n' "$PLATFORM"; done
