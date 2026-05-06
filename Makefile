@@ -6,12 +6,9 @@ override TARGETS := $(strip $(foreach v,$(VERSIONS),$(v) $(v)-git))
 TAG ?= clover/nodejs
 PLATFORMS ?= linux/amd64,linux/arm64/v8
 
-all: ${TARGETS} latest latest-git README.md
+all: ${TARGETS} latest latest-git
 
 .PHONY: all ${TARGETS} latest latest-git
-
-README.md: README.sh
-	$(SHELL) "$<" > $@
 
 ${TARGETS}:
 	docker buildx build --platform "${PLATFORMS}" -t "${TAG}:$@" "$@" --push
