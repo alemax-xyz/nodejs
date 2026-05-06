@@ -35,4 +35,4 @@ The image is based on [NodeSource](https://nodesource.com/) builds and it is bui
 ### Supported platforms
 
  * `linux/amd64`
- * `linux/arm64`
+ * `linux/arm64/v8`
