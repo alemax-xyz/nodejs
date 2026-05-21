@@ -15,21 +15,32 @@ RUN groupadd \
 
 FROM library/debian:stable-slim AS build
 
-ENV LANG=C.UTF-8
+ENV LANG=C.UTF-8 \
+    SANDBOX_ROOT=/
 
 RUN export DEBIAN_FRONTEND=noninteractive \
- && apt-get update
+ && apt-get update \
+ && apt-get install -y wget openssl ca-certificates
 
-RUN export DEBIAN_FRONTEND=noninteractive \
- && echo "deb [trusted=yes] http://deb.nodesource.com/node_23.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
- && apt-get update
+ADD https://github.com/alemax-xyz/misc-tools.git#main /usr/local/bin/
 
 RUN mkdir -p /build /rootfs
-WORKDIR /build
-RUN apt-get download \
-    'nodejs=23*'
 
-RUN find *.deb | xargs -I % dpkg-deb -x % /rootfs
+WORKDIR /build
+
+COPY build/ .
+
+COPY --from=clover/common:latest /var/lib/packages/ var/lib/packages/
+
+RUN apt-sandbox --install --verstamp \
+        --apt-config \
+            APT::Install-Recommends=false \
+            APT::Get::Upgrade==false \
+        --repository . \
+        --keyring . \
+        --installed var/lib/packages \
+        --obsolete packages.obsolete \
+        --required packages.required
 
 WORKDIR /rootfs
 
@@ -69,5 +80,3 @@ FROM clover/common
 ENV LANG=C.UTF-8
 
 COPY --from=build /rootfs /
-
-CMD ["sh"]

@@ -11,10 +11,10 @@ all: ${TARGETS} latest latest-git
 .PHONY: all ${TARGETS} latest latest-git
 
 ${TARGETS}:
-	docker buildx build --platform "${PLATFORMS}" -t "${TAG}:$@" "$@" --push
+	docker buildx build --progress plain --platform "${PLATFORMS}" -t "${TAG}:$@" "$@" --push
 
 latest latest-git:
-	docker buildx build --platform "${PLATFORMS}" -t "${TAG}:$@" "$^" --push
+	docker buildx build --progress plain --platform "${PLATFORMS}" -t "${TAG}:$@" "$^" --push
 
 latest: 24
 
